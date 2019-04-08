@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\mire8\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\mire8\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Pocket Matcher.-751439462.00" t="ExcludeRecursive" />
+    <e p="F:\Development\Repos\PocketMatcher-Unity\Pocket Matcher" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="readme.txt" t="Include" />
+        <e p="Scripts" t="Include">
+          <e p="Board.cs" t="Include" />
+          <e p="GamePiece.cs" t="Include" />
+          <e p="Tile.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Pocket Matcher.sln" t="IncludeFlat" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
