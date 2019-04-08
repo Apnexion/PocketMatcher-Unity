@@ -322,6 +322,7 @@ MonoBehaviour:
   - {fileID: 5849523815316319784, guid: 32e2525f01fc01c44a1916865a1337b4, type: 3}
   - {fileID: 3161755628053466463, guid: 3b99971b961c5bb4bb508d26a984c047, type: 3}
   - {fileID: 4051802896956512547, guid: 62aa78ef713fa0946ae6fdf299605c13, type: 3}
+  swapTime: 0.3
 --- !u!1 &1663771383
 GameObject:
   m_ObjectHideFlags: 0
