@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 524}
+  m_MinSize: {x: 950, y: 548}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 781
-  m_MinSize: {x: 950, y: 524}
+  m_MinSize: {x: 950, y: 548}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -111,10 +111,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 683, y: 474}
-  m_MaxSize: {x: 14002, y: 14024}
+  m_MinSize: {x: 681, y: 498}
+  m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 5371
+  controlID: 1126
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -136,10 +136,10 @@ MonoBehaviour:
     y: 0
     width: 1256
     height: 731
-  m_MinSize: {x: 406, y: 474}
-  m_MaxSize: {x: 10000, y: 14024}
+  m_MinSize: {x: 404, y: 498}
+  m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 5372
+  controlID: 1029
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -161,10 +161,10 @@ MonoBehaviour:
     y: 0
     width: 1256
     height: 457
-  m_MinSize: {x: 406, y: 224}
-  m_MaxSize: {x: 8006, y: 4024}
+  m_MinSize: {x: 404, y: 224}
+  m_MaxSize: {x: 8004, y: 4024}
   vertical: 0
-  controlID: 5373
+  controlID: 1030
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -380,9 +380,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c4b6ffff
-      m_LastClickedID: 0
-      m_ExpandedIDs: 82c2ffffc8c3ffff7ac4ffff76c6fffff4c7ffffa6c8ffff12ceffff46d0fffff8d0ffff18ddffff34dfffff46e0ffff00e3ffff04f9fffff0faffffb4fbffffc0310000d2310000d034000050370000ba37000018390000fe390000683a0000c63b0000ce3b0000c43d00002e3e0000803f00009e3f0000e6400000504100009c420000ba420000d4420000324400009c4400000c460000
+      m_SelectedIDs: d0300000
+      m_LastClickedID: 12496
+      m_ExpandedIDs: b4fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -438,9 +438,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.3914723, y: 6.143024, z: 44.067383}
+    m_Target: {x: 5.2380314, y: 3.8633313, z: 104.60156}
     speed: 2
-    m_Value: {x: 3.3914723, y: 6.143024, z: 44.067383}
+    m_Value: {x: 5.2380314, y: 3.8633313, z: 104.60156}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -472,9 +472,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 6.1705914
+    m_Target: 15.9996195
     speed: 2
-    m_Value: 6.1705914
+    m_Value: 15.9996195
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -524,19 +524,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\Development\Repos\PocketMatcher-Unity\Pocket Matcher
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 51}
-    m_SelectedIDs: f4270000
-    m_LastClickedID: 10228
+    m_SelectedIDs: 202f0000
+    m_LastClickedID: 12064
     m_ExpandedIDs: 000000002a2700006c27000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
