@@ -10,7 +10,8 @@ public class Board : MonoBehaviour
 
     public int borderSize;
 
-    public GameObject tilePrefab;
+    public GameObject tileNormalPrefab;
+    public GameObject tileObstaclePrefab;
     public GameObject[] gamePiecePrefabs;
 
     public float swapTime = 0.5f;
@@ -22,6 +23,17 @@ public class Board : MonoBehaviour
     Tile m_targetTile;
 
     bool m_playerInputEnabled = true;
+
+    public StartingTile[] startingTiles;
+
+    [System.Serializable]
+    public class StartingTile
+    {
+        public GameObject tilePrefab;
+        public int x;
+        public int y;
+        public int z;
+    }
 
     void Start()
     {
@@ -39,7 +51,7 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                GameObject tile = Instantiate(tilePrefab, new Vector3(i, j, 0), Quaternion.identity) as GameObject;
+                GameObject tile = Instantiate(tileNormalPrefab, new Vector3(i, j, 0), Quaternion.identity) as GameObject;
 
                 tile.name = "Tile (" + i + "," + j + ")";
 
