@@ -427,19 +427,19 @@ public class Board : MonoBehaviour
         return combinedMatches;
     }
 
-    void HighlightTileOff(int x, int y)
+    /*void HighlightTileOff(int x, int y)
     {
         SpriteRenderer spriteRenderer = m_allTiles[x, y].GetComponent<SpriteRenderer>();
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0);
-    }
+    }*/
 
-    void HighlightTileOn(int x, int y, Color col)
+    /*void HighlightTileOn(int x, int y, Color col)
     {
         SpriteRenderer spriteRenderer = m_allTiles[x, y].GetComponent<SpriteRenderer>();
         spriteRenderer.color = col;
-    }
+    }*/
     
-    private void HighlightMatchesAt(int x, int y)
+    /*private void HighlightMatchesAt(int x, int y)
     {
         HighlightTileOff(x, y);
 
@@ -452,9 +452,9 @@ public class Board : MonoBehaviour
                 HighlightTileOn(piece.xIndex, piece.yIndex, piece.GetComponent<SpriteRenderer>().color);
             }
         }
-    }
+    }*/
 
-    void HighlightMatches()
+    /*void HighlightMatches()
     {
         for (int i = 0; i < width; i++)
         {
@@ -463,9 +463,9 @@ public class Board : MonoBehaviour
                 HighlightMatchesAt(i, j);
             }
         }
-    }
+    }*/
 
-    void HighlightPieces(List<GamePiece> gamePieces)
+    /*void HighlightPieces(List<GamePiece> gamePieces)
     {
         foreach (GamePiece piece in gamePieces)
         {
@@ -474,7 +474,7 @@ public class Board : MonoBehaviour
                 HighlightTileOn(piece.xIndex, piece.yIndex, piece.GetComponent<SpriteRenderer>().color);
             }
         }
-    }
+    }*/
 
     void ClearPieceAt(int x, int y)
     {
@@ -486,7 +486,7 @@ public class Board : MonoBehaviour
             Destroy(pieceToClear.gameObject);
         }
         
-        HighlightTileOff(x, y);
+        //HighlightTileOff(x, y);
     }
 
     void ClearBoard()
@@ -507,6 +507,26 @@ public class Board : MonoBehaviour
             if (piece != null)
             {
                 ClearPieceAt(piece.xIndex, piece.yIndex);
+            }
+        }
+    }
+
+    void BreakTileAt(int x, int y)
+    {
+        Tile tileToBreak = m_allTiles[x, y];
+        if (tileToBreak != null)
+        {
+            tileToBreak.BreakTile();
+        }
+    }
+
+    void BreakTileAt(List<GamePiece> gamePieces)
+    {
+        foreach (GamePiece piece in gamePieces)
+        {
+            if (piece != null)
+            {
+                BreakTileAt(piece.xIndex, piece.yIndex);
             }
         }
     }
@@ -609,13 +629,14 @@ public class Board : MonoBehaviour
         List<GamePiece> movingPieces = new List<GamePiece>();
         List<GamePiece> matches = new List<GamePiece>();
         
-        HighlightPieces(gamePieces);
+        //HighlightPieces(gamePieces);
         yield return new WaitForSeconds(0.5f);
         bool isFinished = false;
 
         while (!isFinished)
         {
             ClearPieceAt(gamePieces);
+            BreakTileAt(gamePieces);
             
             yield return new WaitForSeconds(0.25f);
             movingPieces = CollapseColumn(gamePieces);
