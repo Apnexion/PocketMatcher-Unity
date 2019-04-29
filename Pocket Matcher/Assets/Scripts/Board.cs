@@ -26,6 +26,8 @@ public class Board : MonoBehaviour
 
     public StartingTile[] startingTiles;
 
+    ParticleManager m_particleManager;
+
     [System.Serializable]
     public class StartingTile
     {
@@ -43,6 +45,7 @@ public class Board : MonoBehaviour
         SetupTiles();
         SetupCamera();
         FillBoard(10, 0.5f);
+        m_particleManager = GameObject.FindWithTag("ParticleManager").GetComponent<ParticleManager>();
     }
 
     private void MakeTile(GameObject prefab, int x, int y, int z = 0)
@@ -507,6 +510,10 @@ public class Board : MonoBehaviour
             if (piece != null)
             {
                 ClearPieceAt(piece.xIndex, piece.yIndex);
+                if (m_particleManager != null)
+                {
+                    m_particleManager.ClearPieceFXAt(piece.xIndex, piece.yIndex);
+                }
             }
         }
     }
@@ -514,8 +521,13 @@ public class Board : MonoBehaviour
     void BreakTileAt(int x, int y)
     {
         Tile tileToBreak = m_allTiles[x, y];
-        if (tileToBreak != null)
+        if (tileToBreak != null && tileToBreak.tileType == TileType.Breakable)
         {
+            if (m_particleManager != null)
+            {
+                m_particleManager.BreakTileFXAt(tileToBreak.breakableValue, x, y, 0);
+            }
+
             tileToBreak.BreakTile();
         }
     }
@@ -630,7 +642,7 @@ public class Board : MonoBehaviour
         List<GamePiece> matches = new List<GamePiece>();
         
         //HighlightPieces(gamePieces);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         bool isFinished = false;
 
         while (!isFinished)
