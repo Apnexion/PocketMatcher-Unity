@@ -716,4 +716,19 @@ public class Board : MonoBehaviour
 
         return true;
     }
+
+    List<GamePiece> GetRowPieces(int row)
+    {
+        List<GamePiece> gamePieces = new List<GamePiece>();
+
+        for (int i = 0; i < width; i++)
+        {
+            if (m_allGamePieces[i, row] != null)
+            {
+                gamePieces.Add(m_allGamePieces[i, row]);
+            }
+        }
+
+        return gamePieces;
+    }
 }
