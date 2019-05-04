@@ -20,7 +20,7 @@ public class GamePiece : MonoBehaviour
         EaseIn,
         SmoothStep,
         SmootherStep
-    };
+    }
 
     public MatchValue matchValue;
 
@@ -35,7 +35,7 @@ public class GamePiece : MonoBehaviour
         Red,
         Yellow,
         Wild
-    };
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -130,5 +130,24 @@ public class GamePiece : MonoBehaviour
         }
 
         m_isMoving = false;
+    }
+
+    public void ChangeColor(GamePiece pieceToMatch)
+    {
+        SpriteRenderer rendererToChange = GetComponent<SpriteRenderer>();
+
+        Color colorToMatch = Color.clear;
+
+        if (pieceToMatch != null)
+        {
+            SpriteRenderer rendererToMatch = pieceToMatch.GetComponent<SpriteRenderer>();
+
+            if (rendererToMatch != null && rendererToChange != null)
+            {
+                rendererToChange.color = rendererToMatch.color;
+            }
+
+            matchValue = pieceToMatch.matchValue;
+        }
     }
 }
