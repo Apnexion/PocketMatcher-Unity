@@ -653,19 +653,14 @@ MonoBehaviour:
     type: 3}
   colorBombPrefab: {fileID: 6853455491563277950, guid: 7f6ace1ad85bd3643bdc262162fcbf3b,
     type: 3}
+  maxCollectibles: 3
+  collectibleCount: 0
+  chanceForCollectible: 0.1
+  collectiblePrefabs:
+  - {fileID: 8584923023425156418, guid: 311170fafd7c65b4a97739bdf2d67d59, type: 3}
   swapTime: 0.3
   startingTiles: []
-  startingGamePieces:
-  - prefab: {fileID: 6853455491563277950, guid: 7f6ace1ad85bd3643bdc262162fcbf3b,
-      type: 3}
-    x: 3
-    y: 3
-    z: 0
-  - prefab: {fileID: 6853455491563277950, guid: 7f6ace1ad85bd3643bdc262162fcbf3b,
-      type: 3}
-    x: 3
-    y: 4
-    z: 0
+  startingGamePieces: []
   fillYOffset: 10
   fillMoveTime: 0.1
 --- !u!1 &1069367521

@@ -12,7 +12,8 @@ public enum MatchValue
     Purple,
     Red,
     Yellow,
-    Wild
+    Wild,
+    None
 }
 
 public class GamePiece : MonoBehaviour

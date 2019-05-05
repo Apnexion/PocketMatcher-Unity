@@ -10,6 +10,7 @@
         <e p="Scripts" t="Include">
           <e p="Board.cs" t="Include" />
           <e p="Bomb.cs" t="Include" />
+          <e p="Collectible.cs" t="Include" />
           <e p="GamePiece.cs" t="Include" />
           <e p="ParticleManager.cs" t="Include" />
           <e p="ParticlePlayer.cs" t="Include" />
