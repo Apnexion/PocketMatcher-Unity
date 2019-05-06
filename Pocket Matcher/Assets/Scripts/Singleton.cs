@@ -25,15 +25,16 @@ public class Singleton<T> : MonoBehaviour where T: MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public virtual void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (m_instance == null)
+        {
+            m_instance = this as T;
+            // DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

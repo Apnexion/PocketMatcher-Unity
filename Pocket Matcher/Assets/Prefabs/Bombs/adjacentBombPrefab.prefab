@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4162256060777920777}
   - component: {fileID: 5381030754838446828}
   m_Layer: 0
-  m_Name: candy8_blue_bomb
+  m_Name: adjacentBombPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,4 +96,5 @@ MonoBehaviour:
   yIndex: 0
   interpolation: 4
   matchValue: 0
+  scoreValue: 160
   bombType: 3

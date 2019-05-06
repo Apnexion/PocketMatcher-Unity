@@ -47,6 +47,8 @@ public class Board : MonoBehaviour
     public int fillYOffset = 10;
     public float fillMoveTime = 0.5f;
 
+    int m_scoreMultiplier = 0;
+
     [System.Serializable]
     public class StartingObject
     {
@@ -646,6 +648,15 @@ public class Board : MonoBehaviour
             {
                 ClearPieceAt(piece.xIndex, piece.yIndex);
 
+                int bonus = 0;
+
+                if (gamePieces.Count >= 4)
+                {
+                    bonus = 20;
+                }
+
+                piece.ScorePoints(m_scoreMultiplier, bonus);
+
                 if (m_particleManager != null)
                 {
                     if (bombedPieces.Contains(piece))
@@ -754,10 +765,15 @@ public class Board : MonoBehaviour
     IEnumerator ClearAndRefillBoardRoutine(List<GamePiece> gamePieces)
     {
         m_playerInputEnabled = false;
+
         List<GamePiece> matches = gamePieces;
+
+        m_scoreMultiplier = 0;
 
         do
         {
+            m_scoreMultiplier++;
+
             // clear and collapse
             yield return StartCoroutine(ClearAndCollapseRoutine(matches));
             yield return null;
@@ -843,6 +859,7 @@ public class Board : MonoBehaviour
             }
             else
             {
+                m_scoreMultiplier++;
                 yield return StartCoroutine(ClearAndCollapseRoutine(matches));
             }
         }
