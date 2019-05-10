@@ -11,9 +11,15 @@
           <e p="Board.cs" t="Include" />
           <e p="Bomb.cs" t="Include" />
           <e p="Collectible.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
           <e p="GamePiece.cs" t="Include" />
+          <e p="MessageWindow.cs" t="Include" />
           <e p="ParticleManager.cs" t="Include" />
           <e p="ParticlePlayer.cs" t="Include" />
+          <e p="RectXformMover.cs" t="Include" />
+          <e p="ScoreManager.cs" t="Include" />
+          <e p="ScreenFader.cs" t="Include" />
+          <e p="Singleton.cs" t="Include" />
           <e p="Tile.cs" t="Include" />
         </e>
       </e>
