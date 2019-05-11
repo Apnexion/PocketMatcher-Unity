@@ -26,6 +26,7 @@
           <e p="ScoreManager.cs" t="Include" />
           <e p="ScreenFader.cs" t="Include" />
           <e p="Singleton.cs" t="Include" />
+          <e p="SoundManager.cs" t="Include" />
           <e p="Tile.cs" t="Include" />
         </e>
       </e>
