@@ -14,9 +14,9 @@ public class Board : MonoBehaviour
     public GameObject tileObstaclePrefab;
     public GameObject[] gamePiecePrefabs;
 
-    public GameObject adjacentBombPrefab;
-    public GameObject columnBombPrefab;
-    public GameObject rowBombPrefab;
+    public GameObject[] adjacentBombPrefabs;
+    public GameObject[] columnBombPrefabs;
+    public GameObject[] rowBombPrefabs;
     public GameObject colorBombPrefab;
 
     public int maxCollectibles = 3;
@@ -48,6 +48,8 @@ public class Board : MonoBehaviour
     public float fillMoveTime = 0.5f;
 
     int m_scoreMultiplier = 0;
+
+    public bool isRefilling = false;
 
     [System.Serializable]
     public class StartingObject
@@ -331,7 +333,7 @@ public class Board : MonoBehaviour
 
     IEnumerator SwitchTilesRoutine(Tile clickedTile, Tile targetTile)
     {
-        if (m_playerInputEnabled)
+        if (m_playerInputEnabled && !GameManager.Instance.IsGameOver)
         {
             GamePiece clickedPiece = m_allGamePieces[clickedTile.xIndex, clickedTile.yIndex];
             GamePiece targetPiece = m_allGamePieces[targetTile.xIndex, targetTile.yIndex];
@@ -775,6 +777,8 @@ public class Board : MonoBehaviour
     {
         m_playerInputEnabled = false;
 
+        isRefilling = true;
+
         List<GamePiece> matches = gamePieces;
 
         m_scoreMultiplier = 0;
@@ -796,6 +800,8 @@ public class Board : MonoBehaviour
         while (matches.Count != 0);
 
         m_playerInputEnabled = true;
+
+        isRefilling = false;
     }
 
     IEnumerator RefillRoutine()
@@ -1019,44 +1025,52 @@ public class Board : MonoBehaviour
     GameObject DropBomb(int x, int y, Vector2 swapDirection, List<GamePiece> gamePieces)
     {
         GameObject bomb = null;
+        MatchValue matchValue = MatchValue.None;
 
-        if (gamePieces.Count >= 4)
+        if (gamePieces != null)
+        {
+            matchValue = FindMatchValue(gamePieces);
+        }
+
+        if (gamePieces.Count >= 5 && matchValue != MatchValue.None)
         {
             if (IsCornerMatch(gamePieces))
             {
                 // drop an adjacent bomb
-                if (adjacentBombPrefab != null)
+                GameObject adjacentBomb = FindGamePieceByMatchValue(adjacentBombPrefabs, matchValue);
+
+                if (adjacentBomb != null)
                 {
-                    bomb = MakeBomb(adjacentBombPrefab, x, y);
+                    bomb = MakeBomb(adjacentBomb, x, y);
                 }
             }
             else
             {
-                if (gamePieces.Count >= 5)
+                if (colorBombPrefab != null)
                 {
-                    if (colorBombPrefab != null)
-                    {
-                        bomb = MakeBomb(colorBombPrefab, x, y);
-                    }
+                    bomb = MakeBomb(colorBombPrefab, x, y);
                 }
-                else
+            }
+        }
+
+        else if (gamePieces.Count == 4 && matchValue != MatchValue.None)
+        {
+            if (swapDirection.x != 0)
+            {
+                GameObject rowBomb = FindGamePieceByMatchValue(rowBombPrefabs, matchValue);
+
+                if (rowBomb != null)
                 {
-                    // row bomb
-                    if (swapDirection.x != 0)
-                    {
-                        if (rowBombPrefab != null)
-                        {
-                            bomb = MakeBomb(rowBombPrefab, x, y);
-                        }
-                    }
-                    // column bomb
-                    else
-                    {
-                        if (columnBombPrefab != null)
-                        {
-                            bomb = MakeBomb(columnBombPrefab, x, y);
-                        }
-                    }
+                    bomb = MakeBomb(rowBomb, x, y);
+                }
+            }
+            else
+            {
+                GameObject columnBomb = FindGamePieceByMatchValue(columnBombPrefabs, matchValue);
+                    
+                if (columnBomb != null)
+                {
+                    bomb = MakeBomb(columnBomb, x, y);
                 }
             }
         }
@@ -1168,5 +1182,41 @@ public class Board : MonoBehaviour
         }
 
         return bombedPieces.Except(piecesToRemove).ToList();
+    }
+
+    MatchValue FindMatchValue(List<GamePiece> gamePieces)
+    {
+        foreach (GamePiece piece in gamePieces)
+        {
+            if (piece != null)
+            {
+                return piece.matchValue;
+            }
+        }
+
+        return MatchValue.None;
+    }
+
+    GameObject FindGamePieceByMatchValue(GameObject[] gamePiecePrefabs, MatchValue matchValue)
+    {
+        if (matchValue == MatchValue.None)
+        {
+            return null;
+        }
+
+        foreach (GameObject go in gamePiecePrefabs)
+        {
+            GamePiece piece = go.GetComponent<GamePiece>();
+
+            if (piece != null)
+            {
+                if (piece.matchValue == matchValue)
+                {
+                    return go;
+                }
+            }
+        }
+
+        return null;
     }
 }
