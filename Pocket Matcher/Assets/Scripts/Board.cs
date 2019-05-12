@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(BoardDeadlock))]
 public class Board : MonoBehaviour
 {
     public int width;
@@ -51,6 +52,8 @@ public class Board : MonoBehaviour
 
     public bool isRefilling = false;
 
+    private BoardDeadlock m_boardDeadlock;
+
     [System.Serializable]
     public class StartingObject
     {
@@ -65,6 +68,7 @@ public class Board : MonoBehaviour
         m_allTiles = new Tile[width, height];
         m_allGamePieces = new GamePiece[width, height];
         m_particleManager = GameObject.FindWithTag("ParticleManager").GetComponent<ParticleManager>();
+        m_boardDeadlock = GetComponent<BoardDeadlock>();
     }
 
     public void SetupBoard()
@@ -250,22 +254,22 @@ public class Board : MonoBehaviour
             {
                 if (m_allGamePieces[i, j] == null && m_allTiles[i, j].tileType != TileType.Obstacle)
                 {
-                    GamePiece piece = null;
+                    // GamePiece piece = null;
 
                     if (j == height - 1 && CanAddCollectible())
                     {
-                        piece = FillRandomCollectibleAt(i, j, falseYOffset, moveTime);
+                        FillRandomCollectibleAt(i, j, falseYOffset, moveTime);
                         collectibleCount++;
                     }
                     else
                     {
-                        piece = FillRandomGamePieceAt(i, j, falseYOffset, moveTime);
+                        FillRandomGamePieceAt(i, j, falseYOffset, moveTime);
                         iterations = 0;
 
                         while (HasMatchOnFill(i, j))
                         {
                             ClearPieceAt(i, j);
-                            piece = FillRandomGamePieceAt(i, j, falseYOffset, moveTime);
+                            FillRandomGamePieceAt(i, j, falseYOffset, moveTime);
                             iterations++;
 
                             if (iterations >= maxIterations)
@@ -384,6 +388,7 @@ public class Board : MonoBehaviour
                     }
 
                     yield return new WaitForSeconds(swapTime);
+                    
                     Vector2 swipeDirection = new Vector2(targetTile.xIndex - clickedTile.xIndex, targetTile.yIndex - clickedTile.yIndex);
                     m_clickedTileBomb = DropBomb(clickedTile.xIndex, clickedTile.yIndex, swipeDirection,
                         clickedPieceMatches);
@@ -753,15 +758,29 @@ public class Board : MonoBehaviour
         return movingPieces;
     }
 
+    List<GamePiece> CollapseColumn(List<int> columnsToCollapse)
+    {
+        List<GamePiece> movingPieces = new List<GamePiece>();
+        foreach (int column in columnsToCollapse)
+        {
+            movingPieces = movingPieces.Union(CollapseColumn(column)).ToList();
+        }
+
+        return movingPieces;
+    }
+
     List<int> GetColumns(List<GamePiece> gamePieces)
     {
         List<int> columns = new List<int>();
 
         foreach (GamePiece piece in gamePieces)
         {
-            if (!columns.Contains(piece.xIndex))
+            if (piece != null)
             {
-                columns.Add(piece.xIndex);
+                if (!columns.Contains(piece.xIndex))
+                {
+                    columns.Add(piece.xIndex);
+                }
             }
         }
 
@@ -836,6 +855,8 @@ public class Board : MonoBehaviour
             collectibleCount -= collectedPieces.Count;
 
             gamePieces = gamePieces.Union(collectedPieces).ToList();
+
+            List<int> columnsToCollapse = GetColumns(gamePieces);
             
             ClearPieceAt(gamePieces, bombedPieces);
             BreakTileAt(gamePieces);
@@ -854,8 +875,8 @@ public class Board : MonoBehaviour
             }
             
             yield return new WaitForSeconds(0.25f);
-            movingPieces = CollapseColumn(gamePieces);
-
+            
+            movingPieces = CollapseColumn(columnsToCollapse);
             while (!IsCollapsed(movingPieces))
             {
                 yield return null;

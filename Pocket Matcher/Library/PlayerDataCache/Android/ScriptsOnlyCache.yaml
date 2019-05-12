@@ -14,8 +14,6 @@ ScriptsOnlyBuild:
     - ScreenFader
     - SoundManager
     - Tile
-    UnityEditor.TestRunner.dll:
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -25,7 +23,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     - UnityEngine.UI.Text
     com.unity.multiplayer-hlapi.Runtime.dll:
-    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkIdentity
   sceneClasses:
     Assets/Scenes/Level 1.unity:
@@ -58,61 +55,61 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9228}
+      Script: {instanceID: 9230}
     - Class: 114
-      Script: {instanceID: 9242}
-    - Class: 114
-      Script: {instanceID: 9294}
+      Script: {instanceID: 9244}
     - Class: 114
       Script: {instanceID: 9296}
     - Class: 114
-      Script: {instanceID: 9336}
+      Script: {instanceID: 9298}
     - Class: 114
-      Script: {instanceID: 9354}
+      Script: {instanceID: 9338}
     - Class: 114
-      Script: {instanceID: 9382}
+      Script: {instanceID: 9356}
     - Class: 114
       Script: {instanceID: 9384}
     - Class: 114
-      Script: {instanceID: 9390}
+      Script: {instanceID: 9386}
     - Class: 114
-      Script: {instanceID: 9396}
+      Script: {instanceID: 9392}
     - Class: 114
-      Script: {instanceID: 9404}
+      Script: {instanceID: 9398}
     - Class: 114
-      Script: {instanceID: 9440}
+      Script: {instanceID: 9406}
     - Class: 114
       Script: {instanceID: 9442}
     - Class: 114
-      Script: {instanceID: 9610}
+      Script: {instanceID: 9444}
     - Class: 114
-      Script: {instanceID: 9670}
+      Script: {instanceID: 9612}
     - Class: 114
       Script: {instanceID: 9672}
     - Class: 114
-      Script: {instanceID: 9876}
+      Script: {instanceID: 9674}
     - Class: 114
-      Script: {instanceID: 9956}
+      Script: {instanceID: 9878}
     - Class: 114
-      Script: {instanceID: 10002}
+      Script: {instanceID: 9958}
     - Class: 114
-      Script: {instanceID: 10102}
+      Script: {instanceID: 10004}
     - Class: 114
-      Script: {instanceID: 10242}
+      Script: {instanceID: 10104}
     - Class: 114
-      Script: {instanceID: 10298}
+      Script: {instanceID: 10244}
     - Class: 114
-      Script: {instanceID: 10384}
+      Script: {instanceID: 10300}
     - Class: 114
-      Script: {instanceID: 10396}
+      Script: {instanceID: 10386}
     - Class: 114
-      Script: {instanceID: 10492}
+      Script: {instanceID: 10398}
     - Class: 114
-      Script: {instanceID: 10674}
+      Script: {instanceID: 10494}
     - Class: 114
-      Script: {instanceID: 10866}
+      Script: {instanceID: 10676}
     - Class: 114
-      Script: {instanceID: 10900}
+      Script: {instanceID: 10868}
+    - Class: 114
+      Script: {instanceID: 10902}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -402,6 +399,18 @@ ScriptsOnlyBuild:
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkTransform
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements
+    className: CallbackExecutor
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements.Editor
+    className: Placeholder
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -842,7 +851,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 58595026b04b40e6a939685d1a771486
+      Hash: 6fb438b36b1e056bcd6827ef8f4e42d9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Board
@@ -969,4 +978,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/Level 1.unity
-  playerPath: F:/Development/Builds/PocketMatcher1.apk
+  playerPath: F:/Development/Builds/Pocket Matcher/Android/0.1.0-td3.apk
