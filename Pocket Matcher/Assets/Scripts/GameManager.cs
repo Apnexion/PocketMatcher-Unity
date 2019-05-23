@@ -32,6 +32,8 @@ public class GameManager : Singleton<GameManager>
     public Sprite winIcon;
     public Sprite goalIcon;
 
+    public ScoreMeter scoreMeter;
+
     LevelGoal m_levelGoal;
 
     public override void Awake()
@@ -45,6 +47,11 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
+        if (scoreMeter != null)
+        {
+            scoreMeter.SetupStars(m_levelGoal);
+        }
+
         Scene scene = SceneManager.GetActiveScene();
 
         if (levelNameText != null)
@@ -195,6 +202,11 @@ public class GameManager : Singleton<GameManager>
             {
                 ScoreManager.Instance.AddScore(piece.scoreValue * multiplier + bonus);
                 m_levelGoal.UpdateScoreStars(ScoreManager.Instance.CurrentScore);
+
+                if (scoreMeter != null)
+                {
+                    scoreMeter.UpdateScoreMeter(ScoreManager.Instance.CurrentScore, m_levelGoal.scoreStars);
+                }
             }
 
             if (SoundManager.Instance != null && piece.clearSound != null)
